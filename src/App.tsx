@@ -1,9 +1,9 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import { IndexPage } from "./IndexPage";
 import { SeasonPage, seasonPageLoader } from "./SeasonPage";
 import * as styles from "./App.css";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <IndexPage />,
