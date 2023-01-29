@@ -1,6 +1,6 @@
 ### todos
 
-- make the produce information digestible in easier format
+- search for types of produce
 
 ### one day
 

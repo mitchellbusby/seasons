@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { Season } from "./SeasonData";
 import { getSeasonPage } from "./seasons";
+import * as styles from "./SeasonPage.css";
 
 export const seasonPageLoader: LoaderFunction = ({ params }) => {
   const data = params["seasonId"];
@@ -26,8 +27,8 @@ export const SeasonPage = () => {
         <Link to="/">{"<"} go back</Link>
       </div>
       <h1>{currentSeasonPage?.attributes["title"] as string}</h1>
-
       <div
+        className={styles.seasonPageHtml}
         dangerouslySetInnerHTML={{
           __html: currentSeasonPage?.html ?? "empty html",
         }}
