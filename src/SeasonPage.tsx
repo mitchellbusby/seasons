@@ -1,4 +1,9 @@
-import { Link, LoaderFunction, useLoaderData } from "react-router-dom";
+import {
+  Link,
+  LoaderFunction,
+  ScrollRestoration,
+  useLoaderData,
+} from "react-router-dom";
 import { Season } from "./SeasonData";
 import { getSeasonPage } from "./seasons";
 
@@ -15,6 +20,8 @@ export const SeasonPage = () => {
 
   return (
     <div>
+      <ScrollRestoration />
+
       <div>
         <Link to="/">{"<"} go back</Link>
       </div>

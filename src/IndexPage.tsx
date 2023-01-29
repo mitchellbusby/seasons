@@ -1,6 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, ScrollRestoration } from "react-router-dom";
 import * as styles from "./IndexPage.css";
 import { Season, seasons } from "./SeasonData";
 
@@ -19,6 +19,7 @@ const Card = ({ season }: { season: { icon: IconProp; name: Season } }) => (
 
 export const IndexPage = () => (
   <div>
+    <ScrollRestoration />
     <h1>Seasons</h1>
     <p>
       This is a micro-site with the aim of easy-to-navigate information on
