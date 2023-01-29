@@ -8,10 +8,26 @@ export const card = style({
   color: "white",
   background: "#5D8D42",
   borderRadius: 0,
+  position: "relative",
   vars: {
     "--h3-color": "white",
   },
 });
+
+export const cardContents = style({
+  gridArea: "1 / 1",
+});
+
+export const cardIcon = style(
+  [
+    {
+      justifySelf: "center",
+      alignSelf: "center",
+      position: "absolute",
+    },
+  ],
+  cardContents
+);
 
 export const cardsLayout = style({
   display: "grid",

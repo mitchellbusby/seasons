@@ -8,16 +8,10 @@ export const IndexPage = () => (
     {seasons.map((s) => {
       return (
         <Link key={s.name} className={styles.card} to={`/season/${s.name}`}>
-          <div
-            style={{
-              position: "absolute",
-              justifySelf: "center",
-              alignSelf: "center",
-            }}
-          >
+          <div className={styles.cardIcon}>
             <FontAwesomeIcon icon={s.icon} size={"4x"} />
           </div>
-          <h3>{s.name}</h3>
+          <h3 className={styles.cardContents}>{s.name}</h3>
         </Link>
       );
     })}
