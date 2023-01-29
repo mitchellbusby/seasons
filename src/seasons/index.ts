@@ -1,8 +1,8 @@
-import type { Season } from "../App";
 import * as summer from "./summer.md";
 import * as winter from "./winter.md";
 import * as spring from "./spring.md";
 import * as autumn from "./autumn.md";
+import { Season } from "../SeasonData";
 
 const getSeasonPage = (
   season: Season
