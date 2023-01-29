@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "dokku-pages deploy --minimal -g dokku@dokku.mitchs.website:seasons -d dist",
+    "go": "yarn build && yarn deploy"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
