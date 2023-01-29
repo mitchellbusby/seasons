@@ -25,8 +25,10 @@ export const IndexPage = () => (
       seasons. While a work in progress, my aim is to catalogue fun activities
       and produce that is in season, similar to{" "}
       <a target="_blank" href="https://seasons.melanie-richards.com/">
-        Melanie Richard's equivalent for North America.
+        Melanie Richard's equivalent for North America
       </a>
+      . Guidance is given for the east coast of Australia, though it may
+      generalise for similar climates the southern hemisphere.
     </p>
     <div className={styles.cardsLayout}>
       {seasons.map((season) => {
