@@ -18,7 +18,7 @@ const Card = ({ season }: { season: { icon: IconProp; name: Season } }) => (
 );
 
 export const IndexPage = () => (
-  <div>
+  <div style={{ display: "grid", gap: 16 }}>
     <ScrollRestoration />
     <h1>Seasons</h1>
     <p>
@@ -35,6 +35,9 @@ export const IndexPage = () => (
       {seasons.map((season) => {
         return <Card season={season} />;
       })}
+    </div>
+    <div>
+      <Link to="/search">Search by produce</Link>
     </div>
   </div>
 );

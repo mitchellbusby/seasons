@@ -22,7 +22,6 @@ export const SeasonPage = () => {
   return (
     <div>
       <ScrollRestoration />
-
       <div>
         <Link to="/">{"<"} go back</Link>
       </div>

@@ -4,12 +4,12 @@ import * as spring from "./spring.md";
 import * as autumn from "./autumn.md";
 import { Season } from "../SeasonData";
 
-const getSeasonPage = (
-  season: Season
-): {
+type SeasonPage = {
   html: string;
   attributes: Record<string, unknown>;
-} => {
+};
+
+const getSeasonPage = (season: Season): SeasonPage => {
   console.log(summer);
   switch (season) {
     case "summer": {
@@ -30,4 +30,6 @@ const getSeasonPage = (
   }
 };
 
-export { getSeasonPage };
+const getAllSeasons = () => [summer, autumn, winter, spring];
+
+export { getSeasonPage, getAllSeasons };
