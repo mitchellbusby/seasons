@@ -2,7 +2,7 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 import { IndexPage } from "./IndexPage";
 import { SeasonPage, seasonPageLoader } from "./SeasonPage";
 import * as styles from "./App.css";
-import { SearchPage } from "./SearchPage";
+import { searchLoader, SearchPage } from "./SearchPage";
 
 const router = createHashRouter([
   {
@@ -16,6 +16,7 @@ const router = createHashRouter([
   },
   {
     path: "/search",
+    loader: searchLoader,
     element: <SearchPage />,
   },
 ]);

@@ -1,5 +1,11 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useRef, useState } from "react";
+import {
+  Form,
+  json,
+  Link,
+  LoaderFunction,
+  useLoaderData,
+} from "react-router-dom";
 import { Season } from "./SeasonData";
 import { getAllSeasons } from "./seasons";
 
@@ -50,26 +56,37 @@ const findProduce = (
   }));
 };
 
-export const SearchPage = () => {
-  const [searchTerm, setSearchTerm] = useState<string>("");
+export const searchLoader: LoaderFunction = ({ request }) => {
+  const url = new URL(request.url);
+  const searchTerm = url.searchParams.get("searchTerm");
+
+  if (!searchTerm) {
+    return json(null);
+  }
   const searchResults = findProduce(searchTerm);
+  return json(searchResults);
+};
+
+export const SearchPage = () => {
+  const searchResults = useLoaderData() as {
+    produce: string;
+    seasons: Season[];
+  }[];
+
   return (
     <div>
       <div>
         <Link to="/">{"<"} go back</Link>
       </div>
       <h1>Search by produce</h1>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <Form method="get">
         <div>
-          <label></label>
-          <input
-            type="search"
-            value={searchTerm}
-            onChange={(event) => setSearchTerm(event.target.value)}
-          />
+          <label>Search term</label>
+          <input name="searchTerm" type="search" placeholder="apple" />
+          <button type="submit">Search</button>
         </div>
-      </form>
-      {searchTerm && (
+      </Form>
+      {searchResults && (
         <div>
           <h3>Search results</h3>
           {searchResults.length > 0 ? (
