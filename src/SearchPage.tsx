@@ -9,14 +9,16 @@ import {
 import { Season } from "./SeasonData";
 import { getAllSeasons } from "./seasons";
 
-// this doesn't actually tell you what the produce was lol; I'll need some regexes for this
+type ProduceQuery = {
+  searchTerm: string;
+  results: { produce: string; seasons: Season[] }[];
+};
+
 const findProduce = (
   searchTerm: string
 ): { produce: string; seasons: Season[] }[] => {
   const results = getAllSeasons()
     .map((m) => {
-      // parse the html, get all lis, extract their contents,
-      // return all possible matches
       const parsedHtml = new DOMParser().parseFromString(m.html, "text/html");
       const allListItems = parsedHtml.querySelectorAll("li");
       const matches = [...allListItems]
@@ -64,14 +66,13 @@ export const searchLoader: LoaderFunction = ({ request }) => {
     return json(null);
   }
   const searchResults = findProduce(searchTerm);
-  return json(searchResults);
+  const result: ProduceQuery = { results: searchResults, searchTerm };
+  return json(result);
 };
 
 export const SearchPage = () => {
-  const searchResults = useLoaderData() as {
-    produce: string;
-    seasons: Season[];
-  }[];
+  const { results: searchResults, searchTerm } =
+    useLoaderData() as ProduceQuery;
 
   return (
     <div>
@@ -82,7 +83,12 @@ export const SearchPage = () => {
       <Form method="get">
         <div>
           <label>Search term</label>
-          <input name="searchTerm" type="search" placeholder="apple" />
+          <input
+            name="searchTerm"
+            type="search"
+            placeholder="apple"
+            defaultValue={searchTerm}
+          />
           <button type="submit">Search</button>
         </div>
       </Form>
@@ -90,10 +96,35 @@ export const SearchPage = () => {
         <div>
           <h3>Search results</h3>
           {searchResults.length > 0 ? (
-            <div>results found! {JSON.stringify(searchResults)}</div>
+            <table>
+              <thead>
+                <tr>
+                  <td>Produce</td>
+                  <td>Summer</td>
+                  <td>Autumn</td>
+                  <td>Winter</td>
+                  <td>Spring</td>
+                </tr>
+              </thead>
+              {searchResults.map((s) => (
+                <tr key={s.produce}>
+                  <td>{s.produce}</td>
+                  <td>{s.seasons.includes("summer") && "x"}</td>
+                  <td>{s.seasons.includes("autumn") && "x"}</td>
+                  <td>{s.seasons.includes("winter") && "x"}</td>
+                  <td>{s.seasons.includes("spring") && "x"}</td>
+                </tr>
+              ))}
+            </table>
           ) : (
             <div>No results found</div>
           )}
+          {/* 
+          {searchResults.length > 0 ? (
+            <div>results found! {JSON.stringify(searchResults)}</div>
+          ) : (
+            <div>No results found</div>
+          )} */}
         </div>
       )}
     </div>
