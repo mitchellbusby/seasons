@@ -10,7 +10,6 @@ type SeasonPage = {
 };
 
 const getSeasonPage = (season: Season): SeasonPage => {
-  console.log(summer);
   switch (season) {
     case "summer": {
       return summer;
