@@ -8,6 +8,8 @@ import { Season } from "./SeasonData";
 import { getSeasonPage } from "./seasons";
 import * as styles from "./SeasonPage.css";
 import { useEffect, useRef, useState } from "react";
+import { autoUpdate, computePosition } from "@floating-ui/dom";
+import { arrow, autoPlacement, flip, offset } from "@floating-ui/core";
 
 export const seasonPageLoader: LoaderFunction = ({ params }) => {
   const data = params["seasonId"];
@@ -27,6 +29,7 @@ export const SeasonPage = () => {
   >(undefined);
 
   const footnoteCardRef = useRef<HTMLDivElement>(null);
+  const footnoteCaretRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const cleanupEffects: VoidFunction[] = [];
@@ -67,13 +70,73 @@ export const SeasonPage = () => {
         setFootnoteElement(undefined);
       }
     };
+
+    const onKeydown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setFootnoteElement(undefined);
+      }
+    };
     if (footnoteElement) {
       document.addEventListener("click", onClick);
+      document.addEventListener("keydown", onKeydown);
     }
     return () => {
       document.removeEventListener("click", onClick);
+      document.removeEventListener("keydown", onKeydown);
     };
   }, [footnoteElement]);
+
+  useEffect(() => {
+    const updateFootnotePosition = () => {
+      if (footnoteElement && footnoteCardRef.current) {
+        computePosition(footnoteElement, footnoteCardRef.current, {
+          strategy: "fixed",
+          placement: "top",
+          middleware: [
+            offset(16),
+            flip({ crossAxis: false }),
+            arrow({ element: footnoteCaretRef.current }),
+          ],
+        }).then(({ x, y, ...rest }) => {
+          if (footnoteCardRef.current) {
+            Object.assign(footnoteCardRef.current.style, {
+              left: `${x}px`,
+              top: `${y}px`,
+            });
+          }
+
+          if (rest.middlewareData.arrow && footnoteCaretRef.current) {
+            const side = rest.placement.split("-")[0];
+
+            const staticSide = {
+              top: "bottom",
+              right: "left",
+              bottom: "top",
+              left: "right",
+            }[side];
+
+            const { x, y } = rest.middlewareData.arrow;
+
+            Object.assign(footnoteCaretRef.current.style, {
+              left: x != null ? `${x}px` : "",
+              top: y != null ? `${y}px` : "",
+              right: "",
+              bottom: "",
+              [staticSide as any]: `${-14 / 2}px`,
+            });
+          }
+        });
+      }
+    };
+
+    if (footnoteElement && footnoteCardRef.current) {
+      return autoUpdate(
+        footnoteElement,
+        footnoteCardRef.current,
+        updateFootnotePosition
+      );
+    }
+  }, [footnoteElement, footnoteCardRef.current, footnoteCardRef.current]);
 
   return (
     <div>
@@ -91,7 +154,18 @@ export const SeasonPage = () => {
       ></div>
       {footnoteElement && (
         <div className={styles.footnoteCard} ref={footnoteCardRef}>
-          hello hello hello
+          {footnoteElement.previousSibling?.textContent}
+          <div
+            id="caret"
+            ref={footnoteCaretRef}
+            style={{
+              position: "absolute",
+              width: "14px",
+              height: "14px",
+              background: "var(--card-background-color)",
+              transform: "rotate(45deg)",
+            }}
+          ></div>
         </div>
       )}
     </div>

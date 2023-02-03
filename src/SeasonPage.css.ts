@@ -29,4 +29,5 @@ export const footnoteCard = style({
   border: "1px solid var(--card-border-color)",
   boxShadow: "var(--card-box-shadow)",
   padding: 8,
+  width: "max-content",
 });
