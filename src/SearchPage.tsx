@@ -14,12 +14,27 @@ type ProduceQuery = {
   results: { produce: string; seasons: Season[] }[];
 };
 
+let parsedSeasons: { season: Season; parsedHtml: Document }[] | undefined =
+  undefined;
+
+const getParsedHtml = (season: Season) => {
+  if (!parsedSeasons) {
+    parsedSeasons = getAllSeasons().map((m) => ({
+      season: (m.attributes["title"] as string).toLowerCase() as Season,
+      parsedHtml: new DOMParser().parseFromString(m.html, "text/html"),
+    }));
+  }
+  return parsedSeasons.find((f) => f.season === season)?.parsedHtml!;
+};
+
 const findProduce = (
   searchTerm: string
 ): { produce: string; seasons: Season[] }[] => {
   const results = getAllSeasons()
     .map((m) => {
-      const parsedHtml = new DOMParser().parseFromString(m.html, "text/html");
+      const parsedHtml = getParsedHtml(
+        (m.attributes["title"] as string).toLowerCase() as Season
+      );
       const allListItems = parsedHtml.querySelectorAll("li");
       const matches = [...allListItems]
         .map((m) => m.textContent)
