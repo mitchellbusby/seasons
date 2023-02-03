@@ -82,15 +82,16 @@ export const SearchPage = () => {
       <h1>Search by produce</h1>
       <Form method="get">
         <div>
-          <label>Search term</label>
+          <label htmlFor="search-term">Search term</label>
           <input
+            id="search-term"
             name="searchTerm"
             type="search"
             placeholder="apple"
             defaultValue={searchTerm}
           />
-          <button type="submit">Search</button>
         </div>
+        <button type="submit">Search</button>
       </Form>
       {searchResults && (
         <div>

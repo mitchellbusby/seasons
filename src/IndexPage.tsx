@@ -18,7 +18,7 @@ const Card = ({ season }: { season: { icon: IconProp; name: Season } }) => (
 );
 
 export const IndexPage = () => (
-  <div style={{ display: "grid", gap: 16 }}>
+  <div style={{ display: "grid", gap: 24 }}>
     <ScrollRestoration />
     <h1>Seasons</h1>
     <p>
