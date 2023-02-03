@@ -77,11 +77,11 @@ export const SeasonPage = () => {
       }
     };
     if (footnoteElement) {
-      document.addEventListener("click", onClick);
+      document.addEventListener("mousedown", onClick);
       document.addEventListener("keydown", onKeydown);
     }
     return () => {
-      document.removeEventListener("click", onClick);
+      document.removeEventListener("mousedown", onClick);
       document.removeEventListener("keydown", onKeydown);
     };
   }, [footnoteElement]);
