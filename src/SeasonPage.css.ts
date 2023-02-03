@@ -11,3 +11,22 @@ globalStyle(`${seasonPageHtml} ul`, {
     },
   },
 });
+
+export const footnoteButton = style({
+  fontSize: 10,
+  padding: "4px 8px",
+  width: "auto",
+  display: "inline-block",
+  lineHeight: "10px",
+  marginLeft: 8,
+});
+
+export const footnoteCard = style({
+  position: "fixed",
+  top: "0",
+  left: "0",
+  background: "var(--card-background-color)",
+  border: "1px solid var(--card-border-color)",
+  boxShadow: "var(--card-box-shadow)",
+  padding: 8,
+});
