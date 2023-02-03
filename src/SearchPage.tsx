@@ -63,7 +63,7 @@ export const searchLoader: LoaderFunction = ({ request }) => {
   const searchTerm = url.searchParams.get("searchTerm");
 
   if (!searchTerm) {
-    return json(null);
+    return json({ searchTerm: "" });
   }
   const searchResults = findProduce(searchTerm);
   const result: ProduceQuery = { results: searchResults, searchTerm };
@@ -75,7 +75,7 @@ export const SearchPage = () => {
     useLoaderData() as ProduceQuery;
 
   return (
-    <div>
+    <div style={{ display: "grid", gap: 16 }}>
       <div>
         <Link to="/">{"<"} go back</Link>
       </div>
