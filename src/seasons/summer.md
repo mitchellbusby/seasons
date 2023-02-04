@@ -1,5 +1,12 @@
 ---
 title: "Summer"
+notes:
+  [
+    "apple* gravenstein",
+    "beans* butter, green",
+    "orange* valencia",
+    "pears* bartlett, william",
+  ]
 ---
 
 ### Fruit
@@ -26,7 +33,7 @@ title: "Summer"
 - orange\*
 - passionfruit
 - peach
-- pear\*
+- pears\*
 - plum
 - pineapple
 - rambutan
@@ -90,7 +97,3 @@ title: "Summer"
 - sage
 - tarragon
 - thyme
-
-### notes
-
-apple* gravenstein, beans* butter, green, orange* valencia, pears* bartlett, william

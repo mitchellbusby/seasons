@@ -30,4 +30,5 @@ export const footnoteCard = style({
   boxShadow: "var(--card-box-shadow)",
   padding: 8,
   width: "max-content",
+  maxWidth: "300px",
 });

@@ -1,5 +1,16 @@
 ---
 title: "Autumn"
+notes:
+  [
+    "apple* aba, bonza, braeburn, cox’s orange pippins, fuji, gala, golden delicious, granny smith, jonagold, jonathan, mutso, pink lady, red delicious, snow, sundowner",
+    "artichoke* jerusalem",
+    "asian greens* bok choy, choy sum, gai laan, wombok",
+    "beans* borlotti, butter, green",
+    "mandarin* imperial",
+    "mushrooms* field, pine, slippery jacks",
+    "orange* navel, valencia",
+    "pear* beurre bosc, howell, josephine, packham, red sensation, williams",
+  ]
 ---
 
 ### Fruit
@@ -98,7 +109,3 @@ title: "Autumn"
 - sage
 - tarragon
 - thyme
-
-### Notes
-
-apple* aba, bonza, braeburn, cox’s orange pippins, fuji, gala, golden delicious, granny smith, jonagold, jonathan, mutso, pink lady, red delicious, snow, sundowner, artichoke* jerusalem, asian greens* bok choy, choy sum, gai laan, wombok beans* borlotti, butter, green, mandarin* imperial, mushrooms* field, pine, slippery jacks, orange* navel, valencia pear* beurre bosc , howell, josephine, packham, red sensation, williams

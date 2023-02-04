@@ -6,7 +6,11 @@ import { Season } from "../SeasonData";
 
 type SeasonPage = {
   html: string;
-  attributes: Record<string, unknown>;
+  attributes: {
+    title: string;
+    notes?: string[];
+    [key: string]: unknown;
+  };
 };
 
 const getSeasonPage = (season: Season): SeasonPage => {

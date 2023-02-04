@@ -152,9 +152,19 @@ export const SeasonPage = () => {
         }}
         ref={markdownRef}
       ></div>
+      <div style={{ display: "grid", gap: 16 }}>
+        <h3>Notes</h3>
+        {currentSeasonPage?.attributes.notes?.map((m) => (
+          <p>{m}</p>
+        ))}
+      </div>
       {footnoteElement && (
+        // add transitions when I can work out how to prevent contents being reaped
         <div className={styles.footnoteCard} ref={footnoteCardRef}>
-          {footnoteElement.previousSibling?.textContent}
+          {getMatchingNote(
+            footnoteElement.previousSibling?.textContent ?? "",
+            currentSeasonPage?.attributes.notes ?? []
+          )}
           <div
             id="caret"
             ref={footnoteCaretRef}
@@ -170,4 +180,8 @@ export const SeasonPage = () => {
       )}
     </div>
   );
+};
+
+const getMatchingNote = (produce: string, notes: string[]) => {
+  return notes.find((f) => f.includes(produce))?.replace(produce, "");
 };

@@ -1,5 +1,12 @@
 ---
 title: Spring
+notes:
+  - apple* lady william
+  - artichoke* globe, jerusalem
+  - asian greens* bok choy, choy sum, gai laan, wombok
+  - beans* broad, green
+  - mandarin* ellendale, imperial, murcot
+  - orange* blood, seville, valencia
 ---
 
 ### Fruit
@@ -91,7 +98,3 @@ title: Spring
 - sage
 - tarragon
 - thyme
-
-### Notes
-
-apple* lady william, artichoke* globe, jerusalem, asian greens* bok choy, choy sum, gai laan, wombok, beans* broad, green, mandarin* ellendale, imperial, murcot, orange* blood, seville, valencia

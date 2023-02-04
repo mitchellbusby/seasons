@@ -1,5 +1,13 @@
 ---
 title: "Winter"
+notes:
+  [
+    "apple* bonza, braeburn, cox’s orange pippins, fuji, gala, golden delicious, granny smith, jonagold, jonathan, lady williams, mutso, pink lady, red delicious, snow, sundowner",
+    "asian greens* bok choy, choy sum, gai laan, wombok",
+    "mandarin* ellendale, imperial, murcot",
+    "orange* blood, navel, seville",
+    "pear* beurre, bosc, josephine, packham",
+  ]
 ---
 
 ### Fruit
@@ -70,7 +78,3 @@ title: "Winter"
 - oregano
 - parsley
 - rosemary
-
-### Notes
-
-apple* bonza, braeburn, cox’s orange pippins, fuji, gala, golden delicious, granny smith, jonagold, jonathan, lady williams, mutso, pink lady, red delicious, snow, sundowner, asian greens* bok choy, choy sum, gai laan, wombok mandarin* ellendale, imperial, murcot, orange* blood, navel, seville, pear\* beurre, bosc, josephine, packham
