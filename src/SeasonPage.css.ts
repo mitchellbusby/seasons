@@ -19,6 +19,7 @@ export const footnoteButton = style({
   display: "inline-block",
   lineHeight: "10px",
   marginLeft: 8,
+  marginBottom: 0,
 });
 
 export const footnoteCard = style({
