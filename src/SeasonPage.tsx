@@ -9,12 +9,8 @@ import { getSeasonPage } from "./seasons";
 import * as styles from "./SeasonPage.css";
 import { useEffect, useRef, useState } from "react";
 import { autoUpdate, computePosition } from "@floating-ui/dom";
-import { arrow, autoPlacement, flip, offset, shift } from "@floating-ui/core";
-import {
-  TransitionGroup,
-  CSSTransition,
-  Transition,
-} from "react-transition-group";
+import { arrow, flip, offset, shift } from "@floating-ui/core";
+import { TransitionGroup, Transition } from "react-transition-group";
 
 export const seasonPageLoader: LoaderFunction = ({ params }) => {
   const data = params["seasonId"];
@@ -39,7 +35,6 @@ export const SeasonPage = () => {
   useEffect(() => {
     const cleanupEffects: VoidFunction[] = [];
     markdownRef.current?.querySelectorAll("li").forEach((node) => {
-      let cardIsOpen = false;
       if (node.textContent?.includes("*")) {
         const footnoteButton = document.createElement("button");
         footnoteButton.textContent = "···";
@@ -69,8 +64,8 @@ export const SeasonPage = () => {
     // If the user clicks outside of the popover, close the popover
     const onClick = (event: MouseEvent) => {
       if (
-        !(event.target as Element).contains(footnoteCardRef.current) &&
-        !(event.target as Element).contains(footnoteElement!)
+        !footnoteCardRef.current?.contains(event.target as Element) &&
+        !footnoteElement?.contains(event.target as Element)
       ) {
         setFootnoteElement(undefined);
       }
