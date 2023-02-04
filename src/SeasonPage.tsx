@@ -9,7 +9,7 @@ import { getSeasonPage } from "./seasons";
 import * as styles from "./SeasonPage.css";
 import { useEffect, useRef, useState } from "react";
 import { autoUpdate, computePosition } from "@floating-ui/dom";
-import { arrow, autoPlacement, flip, offset } from "@floating-ui/core";
+import { arrow, autoPlacement, flip, offset, shift } from "@floating-ui/core";
 
 export const seasonPageLoader: LoaderFunction = ({ params }) => {
   const data = params["seasonId"];
@@ -95,6 +95,7 @@ export const SeasonPage = () => {
           middleware: [
             offset(16),
             flip({ crossAxis: false }),
+            shift({ padding: 8 }),
             arrow({ element: footnoteCaretRef.current }),
           ],
         }).then(({ x, y, ...rest }) => {
@@ -168,6 +169,7 @@ export const SeasonPage = () => {
           <div
             id="caret"
             ref={footnoteCaretRef}
+            // extract out to VE
             style={{
               position: "absolute",
               width: "14px",

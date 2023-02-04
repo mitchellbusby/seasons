@@ -30,5 +30,7 @@ export const footnoteCard = style({
   boxShadow: "var(--card-box-shadow)",
   padding: 8,
   width: "max-content",
-  maxWidth: "300px",
+  // should be max width of:
+  // 95vw and 500px
+  maxWidth: "min(90vw, 500px)",
 });
