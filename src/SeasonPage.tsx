@@ -176,10 +176,7 @@ export const SeasonPage = () => {
           >
             {(status) => (
               <div
-                className={[
-                  styles.footnoteCard,
-                  styles.footnoteCardTransition({ status }),
-                ].join(" ")}
+                className={styles.footnoteCard({ status })}
                 ref={footnoteCardRef}
                 data-status={status}
                 key={footnoteElement?.previousSibling?.textContent}
@@ -189,16 +186,8 @@ export const SeasonPage = () => {
                   currentSeasonPage?.attributes.notes ?? []
                 )}
                 <div
-                  id="caret"
                   ref={footnoteCaretRef}
-                  // extract out to VE
-                  style={{
-                    position: "absolute",
-                    width: "14px",
-                    height: "14px",
-                    background: "var(--card-background-color)",
-                    transform: "rotate(45deg)",
-                  }}
+                  className={styles.footnoteCaret}
                 ></div>
               </div>
             )}

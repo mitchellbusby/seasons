@@ -23,24 +23,21 @@ export const footnoteButton = style({
   marginBottom: 0,
 });
 
-export const footnoteCard = style({
-  position: "fixed",
-  top: "0",
-  left: "0",
-  background: "var(--card-background-color)",
-  border: "1px solid var(--card-border-color)",
-  boxShadow: "var(--card-box-shadow)",
-  padding: 8,
-  width: "max-content",
-  // should be max width of:
-  // 95vw and 500px
-  maxWidth: "min(90vw, 500px)",
-});
-
 export const footnoteTransitionDuration = 200;
 
-export const footnoteCardTransition = recipe({
+export const footnoteCard = recipe({
   base: {
+    position: "fixed",
+    top: "0",
+    left: "0",
+    background: "var(--card-background-color)",
+    border: "1px solid var(--card-border-color)",
+    boxShadow: "var(--card-box-shadow)",
+    padding: 8,
+    width: "max-content",
+    // should be max width of:
+    // 95vw and 500px
+    maxWidth: "min(90vw, 500px)",
     opacity: 0,
     transition: `opacity ${footnoteTransitionDuration}ms`,
   },
@@ -61,4 +58,12 @@ export const footnoteCardTransition = recipe({
       unmounted: {},
     },
   },
+});
+
+export const footnoteCaret = style({
+  position: "absolute",
+  width: 14,
+  height: 14,
+  background: "var(--card-background-color)",
+  transform: "rotate(45deg)",
 });
