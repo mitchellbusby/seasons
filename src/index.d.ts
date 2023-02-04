@@ -1,6 +1,10 @@
 declare module "*.md" {
   // "unknown" would be more detailed depends on how you structure frontmatter
-  const attributes: Record<string, unknown>;
+  const attributes: {
+    title: string;
+    notes?: string[];
+    [key: string]: unknown;
+  };
 
   // When "Mode.HTML" is requested
   const html: string;
