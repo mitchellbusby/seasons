@@ -10,6 +10,11 @@ import * as styles from "./SeasonPage.css";
 import { useEffect, useRef, useState } from "react";
 import { autoUpdate, computePosition } from "@floating-ui/dom";
 import { arrow, autoPlacement, flip, offset, shift } from "@floating-ui/core";
+import {
+  TransitionGroup,
+  CSSTransition,
+  Transition,
+} from "react-transition-group";
 
 export const seasonPageLoader: LoaderFunction = ({ params }) => {
   const data = params["seasonId"];
@@ -139,6 +144,10 @@ export const SeasonPage = () => {
     }
   }, [footnoteElement, footnoteCardRef.current, footnoteCardRef.current]);
 
+  useEffect(() => {
+    setFootnoteElement(undefined);
+  }, []);
+
   return (
     <div>
       <ScrollRestoration />
@@ -159,27 +168,43 @@ export const SeasonPage = () => {
           <p>{m}</p>
         ))}
       </div>
-      {footnoteElement && (
-        // add transitions when I can work out how to prevent contents being reaped
-        <div className={styles.footnoteCard} ref={footnoteCardRef}>
-          {getMatchingNote(
-            footnoteElement.previousSibling?.textContent ?? "",
-            currentSeasonPage?.attributes.notes ?? []
-          )}
-          <div
-            id="caret"
-            ref={footnoteCaretRef}
-            // extract out to VE
-            style={{
-              position: "absolute",
-              width: "14px",
-              height: "14px",
-              background: "var(--card-background-color)",
-              transform: "rotate(45deg)",
-            }}
-          ></div>
-        </div>
-      )}
+      <TransitionGroup component={null}>
+        {footnoteElement && (
+          <Transition
+            timeout={styles.footnoteTransitionDuration}
+            onEnter={(node: HTMLElement) => node && node.scrollTop}
+          >
+            {(status) => (
+              <div
+                className={[
+                  styles.footnoteCard,
+                  styles.footnoteCardTransition({ status }),
+                ].join(" ")}
+                ref={footnoteCardRef}
+                data-status={status}
+                key={footnoteElement?.previousSibling?.textContent}
+              >
+                {getMatchingNote(
+                  footnoteElement?.previousSibling?.textContent ?? "",
+                  currentSeasonPage?.attributes.notes ?? []
+                )}
+                <div
+                  id="caret"
+                  ref={footnoteCaretRef}
+                  // extract out to VE
+                  style={{
+                    position: "absolute",
+                    width: "14px",
+                    height: "14px",
+                    background: "var(--card-background-color)",
+                    transform: "rotate(45deg)",
+                  }}
+                ></div>
+              </div>
+            )}
+          </Transition>
+        )}
+      </TransitionGroup>
     </div>
   );
 };

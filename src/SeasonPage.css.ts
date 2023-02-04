@@ -1,4 +1,5 @@
 import { globalStyle, style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 
 export const seasonPageHtml = style({});
 
@@ -34,4 +35,30 @@ export const footnoteCard = style({
   // should be max width of:
   // 95vw and 500px
   maxWidth: "min(90vw, 500px)",
+});
+
+export const footnoteTransitionDuration = 200;
+
+export const footnoteCardTransition = recipe({
+  base: {
+    opacity: 0,
+    transition: `opacity ${footnoteTransitionDuration}ms`,
+  },
+  variants: {
+    status: {
+      entering: {
+        opacity: 1,
+      },
+      entered: {
+        opacity: 1,
+      },
+      exiting: {
+        opacity: 0,
+      },
+      exited: {
+        opacity: 0,
+      },
+      unmounted: {},
+    },
+  },
 });
