@@ -154,7 +154,7 @@ export const SeasonPage = () => {
       <div>
         <Link to="/">{"<"} go back</Link>
       </div>
-      <h1>{currentSeasonPage?.attributes["title"] as string}</h1>
+      <h1>{currentSeasonPage?.attributes.title}</h1>
       <div
         className={styles.seasonPageHtml}
         dangerouslySetInnerHTML={{
