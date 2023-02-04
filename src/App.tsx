@@ -28,6 +28,9 @@ function App() {
         <RouterProvider router={router} />
       </div>
       <div>
+        <hr />
+      </div>
+      <div>
         A site made by Mitchell Busby. All produce information is sourced from{" "}
         <a href="https://sustainabletable.org.au/all-things-ethical-eating/seasonal-produce-guide/">
           Sustainable Table
