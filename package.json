@@ -17,6 +17,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@types/react-transition-group": "^4.4.5",
+    "@types/sanitize-html": "^2.8.0",
     "@vanilla-extract/css": "^1.9.3",
     "@vanilla-extract/recipes": "^0.3.0",
     "@vanilla-extract/vite-plugin": "^3.7.1",
@@ -24,6 +25,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0",
     "react-transition-group": "^4.4.5",
+    "sanitize-html": "^2.9.0",
     "vite-plugin-markdown": "^2.1.0"
   },
   "devDependencies": {

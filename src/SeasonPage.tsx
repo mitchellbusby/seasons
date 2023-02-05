@@ -11,6 +11,7 @@ import { useEffect, useRef, useState } from "react";
 import { autoUpdate, computePosition } from "@floating-ui/dom";
 import { arrow, flip, offset, shift } from "@floating-ui/core";
 import { TransitionGroup, Transition } from "react-transition-group";
+import { GoBack } from "./components/GoBack";
 
 export const seasonPageLoader: LoaderFunction = ({ params }) => {
   const data = params["seasonId"];
@@ -146,9 +147,7 @@ export const SeasonPage = () => {
   return (
     <div>
       <ScrollRestoration />
-      <div>
-        <Link to="/">{"<"} go back</Link>
-      </div>
+      <GoBack />
       <h1>{currentSeasonPage?.attributes.title}</h1>
       <div
         className={styles.seasonPageHtml}

@@ -3,6 +3,7 @@ import { IndexPage } from "./IndexPage";
 import { SeasonPage, seasonPageLoader } from "./SeasonPage";
 import * as styles from "./App.css";
 import { searchLoader, SearchPage } from "./SearchPage";
+import * as MarketUpdatePage from "./MarketUpdatePage";
 
 const router = createHashRouter([
   {
@@ -19,6 +20,11 @@ const router = createHashRouter([
     loader: searchLoader,
     element: <SearchPage />,
   },
+  {
+    path: "/market-update",
+    loader: MarketUpdatePage.loader,
+    element: <MarketUpdatePage.MarketUpdatePage />,
+  },
 ]);
 
 function App() {
@@ -34,6 +40,13 @@ function App() {
         A site made by Mitchell Busby. All produce information is sourced from{" "}
         <a href="https://sustainabletable.org.au/all-things-ethical-eating/seasonal-produce-guide/">
           Sustainable Table
+        </a>{" "}
+        and{" "}
+        <a
+          href="https://www.harrisfarm.com.au/blogs/daves-market-update"
+          target="_blank"
+        >
+          Harris Farm
         </a>
         .
       </div>

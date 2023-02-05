@@ -6,6 +6,7 @@ import {
   LoaderFunction,
   useLoaderData,
 } from "react-router-dom";
+import { GoBack } from "./components/GoBack";
 import { Season } from "./SeasonData";
 import { getAllSeasons } from "./seasons";
 
@@ -91,9 +92,7 @@ export const SearchPage = () => {
 
   return (
     <div style={{ display: "grid", gap: 16 }}>
-      <div>
-        <Link to="/">{"<"} go back</Link>
-      </div>
+      <GoBack />
       <h1>Search by produce</h1>
       <Form method="get">
         <div>

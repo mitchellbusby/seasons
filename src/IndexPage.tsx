@@ -39,5 +39,8 @@ export const IndexPage = () => (
     <div>
       <Link to="/search">Search by produce</Link>
     </div>
+    <div>
+      <Link to="/market-update">Market update</Link>
+    </div>
   </div>
 );
